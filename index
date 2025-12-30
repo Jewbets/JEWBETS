@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JEWBETS | Clothing Brand</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1 class="logo">JEWBETS</h1>
+  <nav>
+    <a href="#shop">Shop</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>BUILT DIFFERENT.</h2>
+  <p>Streetwear inspired by identity, grit, and culture.</p>
+  <a class="button" href="#shop">View Collection</a>
+</section>
+
+<section id="shop">
+  <h2>Latest Drops</h2>
+  <div class="products">
+    <div class="product">
+      <div class="img-placeholder">IMAGE</div>
+      <h3>JEWBETS Tee</h3>
+      <p>$35</p>
+    </div>
+    <div class="product">
+      <div class="img-placeholder">IMAGE</div>
+      <h3>JEWBETS Hoodie</h3>
+      <p>$65</p>
+    </div>
+    <div class="product">
+      <div class="img-placeholder">IMAGE</div>
+      <h3>JEWBETS Cap</h3>
+      <p>$30</p>
+    </div>
+  </div>
+  <p class="coming-soon">Online checkout coming soon.</p>
+</section>
+
+<section id="about">
+  <h2>About JEWBETS</h2>
+  <p>
+    JEWBETS is more than clothing — it’s a statement.
+    Built for those who move with purpose and stand on who they are.
+    Quality materials. Limited drops. No shortcuts.
+  </p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: contact@jewbets.com</p>
+  <p>Instagram: @jewbets</p>
+</section>
+
+<footer>
+  <p>© 2025 JEWBETS. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
