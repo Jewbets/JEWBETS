@@ -155,3 +155,21 @@ footer {
   background: #222;
   color: white;
 }
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+}
+
+.hero-logo {
+  max-width: 250px;   /* Adjust the size as you like */
+  width: 50%;
+  height: auto;
+  margin-bottom: 30px; /* Space between logo and text */
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
