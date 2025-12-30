@@ -31,6 +31,10 @@ header .container {
   justify-content: space-between;
   align-items: center;
 }
+.logo {
+  height: 50px; /* adjust if needed */
+  width: auto;
+}
 
 nav a {
   color: white;
