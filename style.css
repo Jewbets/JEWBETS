@@ -29,8 +29,14 @@ header {
 
 header .container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start; /* left-align header logo */
   align-items: center;
+}
+
+.header-logo {
+  height: 40px;       /* top-left logo size */
+  width: auto;
+  margin-right: 20px; /* space between logo and nav */
 }
 
 nav a {
@@ -55,7 +61,7 @@ nav a:hover {
   align-items: center;
   text-align: center;
   overflow: hidden;
-  padding-top: 60px; /* to offset fixed header */
+  padding-top: 60px; /* offset for fixed header */
 }
 
 .hero .overlay {
@@ -69,7 +75,7 @@ nav a:hover {
 }
 
 .hero-logo {
-  max-width: 250px; /* adjust size */
+  max-width: 250px; /* main hero logo size */
   width: 50%;
   height: auto;
   margin-bottom: 30px;
@@ -154,8 +160,15 @@ footer {
   background: #222;
   color: white;
 }
-.header-logo {
-  height: 40px;       /* size for top-left logo */
-  width: auto;
-  margin-right: 20px; /* space between logo and nav */
+
+/* Responsive for header logo */
+@media (max-width: 768px) {
+  .header-logo {
+    height: 30px;
+    margin-right: 10px;
+  }
+  nav a {
+    margin-left: 15px;
+    font-size: 0.9em;
+  }
 }
