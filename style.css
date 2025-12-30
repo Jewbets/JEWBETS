@@ -53,7 +53,7 @@ header .header-container {
 }
 
 .nav-links a:hover {
-  color: #00cc44;
+  color: #00cc44; /* green hover */
 }
 
 /* Hero Section */
@@ -89,7 +89,7 @@ header .header-container {
 }
 
 .hero-logo {
-  width: 300px; /* bigger logo */
+  width: 300px; /* bigger hero logo */
   height: auto;
 }
 
@@ -117,12 +117,19 @@ header .header-container {
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
   max-width: 300px;
+  transition: transform 0.3s ease;
 }
 
+/* Pulse Animation on Hover */
 .product:hover {
-  transform: translateY(-5px);
+  animation: pulse 0.5s forwards;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1.05); }
 }
 
 .product img {
