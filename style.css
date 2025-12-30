@@ -91,6 +91,10 @@ header .header-container {
 .hero-left {
   color: white;
   max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical center */
+  align-items: flex-start;  /* horizontal alignment */
 }
 
 .hero-left h2 {
@@ -127,6 +131,11 @@ header .header-container {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.hoodie-image:hover {
+  transform: scale(1.05) rotate(-2deg);
 }
 
 /* Products Section */
@@ -200,6 +209,7 @@ footer {
   }
   .hero-left, .hero-right {
     max-width: 100%;
+    align-items: center;  /* center content on smaller screens */
   }
   .hero-left h2 {
     font-size: 2.2em;
