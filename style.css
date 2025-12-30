@@ -29,14 +29,14 @@ header {
 
 header .container {
   display: flex;
-  justify-content: flex-start; /* left-align header logo */
+  justify-content: space-between; /* logo on left, nav on right */
   align-items: center;
 }
 
 .header-logo {
-  height: 40px;       /* top-left logo size */
+  height: 40px;       /* size for top-left logo */
   width: auto;
-  margin-right: 20px; /* space between logo and nav */
+  margin-right: 20px; /* optional spacing */
 }
 
 nav a {
@@ -161,7 +161,7 @@ footer {
   color: white;
 }
 
-/* Responsive for header logo */
+/* Responsive for header logo and nav */
 @media (max-width: 768px) {
   .header-logo {
     height: 30px;
