@@ -27,19 +27,21 @@ header {
   z-index: 100;
 }
 
-header .container {
+header .header-container {
   display: flex;
-  justify-content: space-between; /* logo on left, nav on right */
+  justify-content: space-between; /* logo left, nav right */
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .header-logo {
-  height: 40px;       /* size for top-left logo */
+  height: 40px;
   width: auto;
-  margin-right: 20px; /* optional spacing */
 }
 
-nav a {
+.nav-links a {
   color: white;
   margin-left: 20px;
   text-decoration: none;
@@ -47,7 +49,7 @@ nav a {
   transition: color 0.3s;
 }
 
-nav a:hover {
+.nav-links a:hover {
   color: #ffcc00;
 }
 
@@ -161,13 +163,12 @@ footer {
   color: white;
 }
 
-/* Responsive for header logo and nav */
+/* Responsive */
 @media (max-width: 768px) {
   .header-logo {
     height: 30px;
-    margin-right: 10px;
   }
-  nav a {
+  .nav-links a {
     margin-left: 15px;
     font-size: 0.9em;
   }
