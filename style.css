@@ -88,8 +88,10 @@ header .header-container {
   gap: 20px;
 }
 
+/* HERO LOGO FIXED FOR ALL SCREENS */
 .hero-logo {
-  width: 300px; /* bigger hero logo */
+  width: 300px; /* larger logo for desktop */
+  max-width: 90%; /* scales down on mobile */
   height: auto;
 }
 
@@ -121,7 +123,7 @@ header .header-container {
   transition: transform 0.3s ease;
 }
 
-/* Pulse Animation on Hover */
+/* PULSE ANIMATION FOR ALL SCREENS */
 .product:hover {
   animation: pulse 0.5s forwards;
 }
