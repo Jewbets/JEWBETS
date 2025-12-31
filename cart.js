@@ -8,11 +8,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const cartItemsDiv = document.getElementById("cart-items");
   const cartTotalDiv = document.getElementById("cart-total");
 
+  // Update cart counter
   function updateCartCount() {
-    cartCount.innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
+    if(cartCount) {
+      cartCount.innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
+    }
   }
 
+  // Render cart items
   function renderCart() {
+    if(!cartItemsDiv) return;
     cartItemsDiv.innerHTML = "";
     if(cart.length === 0){
       cartItemsDiv.innerHTML = "<p>Your cart is empty!</p>";
@@ -39,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     cartTotalDiv.innerText = "Total: $" + total.toFixed(2);
 
+    // Quantity buttons
     document.querySelectorAll(".increase").forEach(btn=>{
       btn.addEventListener("click",(e)=>{
         const idx = e.target.dataset.index;
@@ -70,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Add to Cart buttons
   buttons.forEach((button) => {
     button.addEventListener("click", () => {
       const product = button.parentElement;
@@ -91,24 +98,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  clearBtn.addEventListener("click", () => {
-    cart = [];
-    localStorage.setItem("cart", JSON.stringify(cart));
-    renderCart();
-    updateCartCount();
-  });
+  // Clear cart
+  if(clearBtn){
+    clearBtn.addEventListener("click", () => {
+      cart = [];
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+      updateCartCount();
+    });
+  }
 
-  // Stripe Payment Link (replace with your live Payment Link if needed)
+  // Stripe Payment Link
   const stripePaymentLink = "https://buy.stripe.com/test_5kQfZhgAh8H76EIeCwbAs00";
+  if(checkoutBtn){
+    checkoutBtn.addEventListener("click", () => {
+      if(cart.length === 0){
+        alert("Your cart is empty!");
+        return;
+      }
+      window.location.href = stripePaymentLink;
+    });
+  }
 
-  checkoutBtn.addEventListener("click", () => {
-    if(cart.length === 0){
-      alert("Your cart is empty!");
-      return;
-    }
-    window.location.href = stripePaymentLink;
-  });
-
+  // Initial render & counter
   renderCart();
   updateCartCount();
 });
