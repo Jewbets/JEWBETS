@@ -3,7 +3,7 @@ const app = express();
 const stripe = require("stripe")("sk_test_YOUR_SECRET_KEY"); // <-- Replace with your Stripe secret key
 app.use(express.json());
 
-// Allow CORS if testing locally
+// CORS for local testing
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
@@ -11,7 +11,7 @@ app.use((req, res, next) => {
 });
 
 app.post("/create-checkout-session", async (req, res) => {
-  const cartItems = req.body.items; // [{title, price, quantity, priceId}]
+  const cartItems = req.body.items;
 
   const line_items = cartItems.map(item => ({
     price: item.priceId,
