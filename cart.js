@@ -1,82 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const cartItemsDiv = document.getElementById("cart-items");
-  const cartTotal = document.getElementById("cart-total");
-  const clearBtn = document.getElementById("clear-cart");
-  const checkoutBtn = document.getElementById("checkout");
-
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  function renderCart() {
-    cartItemsDiv.innerHTML = "";
-    let total = 0;
+  const buttons = document.querySelectorAll(".product button");
+  const cartCount = document.getElementById("cart-count");
+  const checkoutBtn = document.getElementById("checkout");
+  const clearBtn = document.getElementById("clear-cart");
 
-    if(cart.length === 0){
-      cartItemsDiv.innerHTML = "<p>Your cart is empty!</p>";
-      cartTotal.innerText = "";
-      return;
-    }
-
-    cart.forEach((item,index)=>{
-      const div = document.createElement("div");
-      div.classList.add("product");
-      div.innerHTML = `
-        <img src="${item.img}" alt="${item.title}" class="cart-img">
-        <h3>${item.title}</h3>
-        <p>$${item.price}</p>
-        <div class="quantity">
-          <button class="decrease" data-index="${index}">-</button>
-          <span>${item.quantity}</span>
-          <button class="increase" data-index="${index}">+</button>
-        </div>
-        <button class="remove-item" data-index="${index}">Remove</button>
-      `;
-      cartItemsDiv.appendChild(div);
-      total += parseFloat(item.price) * item.quantity;
-    });
-
-    cartTotal.innerText = "Total: $" + total.toFixed(2);
-
-    document.querySelectorAll(".increase").forEach(btn=>{
-      btn.addEventListener("click",(e)=>{
-        const idx = e.target.dataset.index;
-        cart[idx].quantity++;
-        localStorage.setItem("cart",JSON.stringify(cart));
-        renderCart();
-      });
-    });
-
-    document.querySelectorAll(".decrease").forEach(btn=>{
-      btn.addEventListener("click",(e)=>{
-        const idx = e.target.dataset.index;
-        if(cart[idx].quantity>1){ cart[idx].quantity--; } else { cart.splice(idx,1); }
-        localStorage.setItem("cart",JSON.stringify(cart));
-        renderCart();
-      });
-    });
-
-    document.querySelectorAll(".remove-item").forEach(btn=>{
-      btn.addEventListener("click",(e)=>{
-        const idx = e.target.dataset.index;
-        cart.splice(idx,1);
-        localStorage.setItem("cart",JSON.stringify(cart));
-        renderCart();
-      });
-    });
+  function updateCartCount() {
+    cartCount.innerText = cart.reduce((acc, item) => acc + item.quantity, 0);
   }
 
-  clearBtn.addEventListener("click",()=>{
-    cart = [];
-    localStorage.setItem("cart",JSON.stringify(cart));
-    renderCart();
+  updateCartCount();
+
+  // Add to cart buttons
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const product = button.parentElement;
+      const title = product.querySelector("h3").innerText;
+      const price = product.querySelector("p").innerText.replace("$","");
+      const img = product.querySelector("img").src;
+
+      let existing = cart.find(item => item.title === title);
+      if(existing){
+        existing.quantity++;
+      } else {
+        cart.push({ title, price, img, quantity:1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+      alert(`${title} added to cart!`);
+    });
   });
 
-  checkoutBtn.addEventListener("click",()=>{
-    if(cart.length===0){ alert("Your cart is empty!"); return; }
-    alert("Thank you for your order!");
+  // Clear cart
+  clearBtn.addEventListener("click", () => {
     cart = [];
-    localStorage.setItem("cart",JSON.stringify(cart));
-    renderCart();
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartCount();
+    document.getElementById("cart-items").innerHTML = "<p>Your cart is empty!</p>";
+    document.getElementById("cart-total").innerText = "";
   });
 
-  renderCart();
+  // Checkout button now redirects to your Stripe Payment Link
+  checkoutBtn.addEventListener("click", () => {
+    if(cart.length === 0){
+      alert("Your cart is empty!");
+      return;
+    }
+    // Redirect to your Stripe Payment Link
+    window.location.href = "https://buy.stripe.com/test_5kQfZhgAh8H76EIeCwbAs00";
+  });
 });
