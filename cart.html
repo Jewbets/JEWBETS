@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Cart</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JEWBETS Cart</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <div class="container header-container">
-    <a href="index.html">
-      <img src="images/logo.png" class="header-logo" />
-    </a>
-  </div>
-</header>
-
-<section class="cart-page">
-  <div class="container cart-container">
-    
-    <div class="cart-left">
-      <h2>Your Cart</h2>
-      <div id="cart-items" class="cart-items"></div>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="JEWBETS Logo" class="header-logo"></a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Continue Shopping</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="cart-right cart-summary">
-      <h3>Order Summary</h3>
-      <p id="cart-total"></p>
-      <button id="checkout" class="checkout-btn">Checkout</button>
-      <button id="clear-cart" class="clear-btn">Clear Cart</button>
+  <!-- Cart Page -->
+  <section class="cart-page">
+    <div class="container cart-container">
+
+      <!-- Cart Items -->
+      <div class="cart-left">
+        <h2>Your Cart</h2>
+        <div id="cart-items" class="cart-items"></div>
+      </div>
+
+      <!-- Summary -->
+      <div class="cart-right">
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <p id="cart-total"></p>
+          <button id="checkout" class="checkout-btn">Checkout</button>
+          <button id="clear-cart" class="clear-btn">Clear Cart</button>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
-
-<script src="cart.js"></script>
+  <script src="cart.js"></script>
 </body>
 </html>
