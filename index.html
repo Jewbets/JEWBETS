@@ -3,58 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JEWBETS</title>
+  <title>JEWBETS Cart</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <div class="container header-container">
-    <a href="index.html">
-      <img src="images/logo.png" class="header-logo" />
-    </a>
-    <nav class="nav-links">
-      <a href="#shop">Shop</a>
-      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-    </nav>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="overlay"></div>
-  <div class="hero-container">
-    <img src="images/logo.png" class="hero-logo">
-    <h2>JEWBETS | EST. 2026 | BOULDER CO</h2>
-  </div>
-</section>
-
-<section id="shop" class="products">
-  <div class="container products-grid">
-
-    <div class="product">
-      <img src="images/hoodie.png">
-      <h3>JEWBETS Hoodie V4.0</h3>
-      <p>$60</p>
-      <button>Add to Cart</button>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="JEWBETS Logo" class="header-logo"></a>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Continue Shopping</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="product">
-      <img src="images/hoodie.png">
-      <h3>JEWBETS Hoodie V4.0</h3>
-      <p>$60</p>
-      <button>Add to Cart</button>
+  <!-- Cart Page -->
+  <section class="cart-page">
+    <div class="container cart-container">
+
+      <!-- Cart Items -->
+      <div class="cart-left">
+        <h2>Your Cart</h2>
+        <div id="cart-items" class="cart-items"></div>
+      </div>
+
+      <!-- Summary -->
+      <div class="cart-right">
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <p id="cart-total"></p>
+          <button id="checkout" class="checkout-btn">Checkout</button>
+          <button id="clear-cart" class="clear-btn">Clear Cart</button>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="product">
-      <img src="images/hoodie.png">
-      <h3>JEWBETS Hoodie V4.0</h3>
-      <p>$60</p>
-      <button>Add to Cart</button>
-    </div>
-
-  </div>
-</section>
-
-<script src="script.js"></script>
+  <script src="cart.js"></script>
 </body>
 </html>
