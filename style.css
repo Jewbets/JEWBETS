@@ -23,16 +23,12 @@ header .header-container { display:flex; justify-content:space-between; align-it
 .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; justify-items:center; }
 .product { background:white; padding:20px; text-align:center; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1); max-width:300px; transition:transform 0.3s ease; }
 
-/* Hover animation only for shop products */
+/* Hover animation only for main shop products */
 .products-grid .product:hover {
   animation: pulse 0.5s forwards;
 }
 
-/* Remove hover animation for cart products */
-.cart-items .product:hover {
-  animation: none !important;
-}
-
+/* Pulse keyframes */
 @keyframes pulse { 0% { transform:scale(1); } 50% { transform:scale(1.08); } 100% { transform:scale(1.05); } }
 
 .product img { width:100%; border-radius:5px; }
@@ -40,15 +36,23 @@ header .header-container { display:flex; justify-content:space-between; align-it
 .product button:hover { background:#444; }
 
 .cart-img { width:80px; height:auto; display:inline-block; margin-right:10px; vertical-align:middle; }
+.quantity { display:inline-flex; gap:5px; align-items:center; margin-top:5px; }
+.quantity button { padding:2px 6px; }
 
-/* Ensure cart images don't scale or animate */
+/* --------------------
+   Disable hover animation and scaling on cart page
+-------------------- */
+.cart-items .product,
+.cart-items .product:hover,
+.cart-page .product:hover {
+  animation: none !important;
+  transform: none !important;
+}
+
 .cart-items .product img {
   transform: none !important;
   transition: none !important;
 }
-
-.quantity { display:inline-flex; gap:5px; align-items:center; margin-top:5px; }
-.quantity button { padding:2px 6px; }
 
 /* Footer */
 footer { text-align:center; padding:30px 20px; background:#222; color:white; }
