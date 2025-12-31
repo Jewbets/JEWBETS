@@ -42,13 +42,30 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("cart-total").innerText = "";
   });
 
-  // Checkout button now redirects to your Stripe Payment Link
-  checkoutBtn.addEventListener("click", () => {
+  // Checkout with Stripe
+  checkoutBtn.addEventListener("click", async () => {
     if(cart.length === 0){
       alert("Your cart is empty!");
       return;
     }
-    // Redirect to your Stripe Payment Link
-    window.location.href = "https://buy.stripe.com/test_5kQfZhgAh8H76EIeCwbAs00";
+
+    // Add Stripe priceId to each cart item
+    const cartWithPriceId = cart.map(item => ({
+      ...item,
+      priceId: "price_XXXXXXXXXXXX" // <-- Replace with your Stripe Price ID for each product
+    }));
+
+    try {
+      const response = await fetch("https://yourserver.com/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: cartWithPriceId })
+      });
+      const data = await response.json();
+      window.location.href = data.url; // Redirect to Stripe Checkout
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    }
   });
 });
