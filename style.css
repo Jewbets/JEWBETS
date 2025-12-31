@@ -23,7 +23,7 @@ header .header-container { display:flex; justify-content:space-between; align-it
 .products-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; justify-items:center; }
 .product { background:white; padding:20px; text-align:center; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1); max-width:300px; transition:transform 0.3s ease; }
 
-/* Hover animation only for main shop products */
+/* Hover animation only for shop products */
 .products-grid .product:hover {
   animation: pulse 0.5s forwards;
 }
@@ -38,18 +38,6 @@ header .header-container { display:flex; justify-content:space-between; align-it
 .quantity { display:inline-flex; gap:5px; align-items:center; margin-top:5px; }
 .quantity button { padding:2px 6px; }
 
-/* Disable hover animation for cart */
-.cart-items .product,
-.cart-items .product:hover,
-.cart-page .product:hover {
-  animation: none !important;
-  transform: none !important;
-}
-.cart-items .product img {
-  transform: none !important;
-  transition: none !important;
-}
-
 /* --------------------
    Cart Page Styling
 -------------------- */
@@ -63,9 +51,7 @@ header .header-container { display:flex; justify-content:space-between; align-it
   gap: 40px;
   flex-wrap: wrap;
 }
-.cart-left {
-  flex: 2;
-}
+.cart-left { flex: 2; }
 .cart-right {
   flex: 1;
   background: white;
@@ -135,6 +121,19 @@ header .header-container { display:flex; justify-content:space-between; align-it
   margin-top: 10px;
 }
 .clear-btn:hover { background: #d9363e; }
+
+/* --------------------
+   Disable hover animation and scaling for cart page (desktop & mobile)
+-------------------- */
+.cart-page .product,
+.cart-page .product:hover {
+  animation: none !important;
+  transform: none !important;
+}
+.cart-page .product img {
+  transform: none !important;
+  transition: none !important;
+}
 
 /* Footer */
 footer { text-align:center; padding:30px 20px; background:#222; color:white; }
